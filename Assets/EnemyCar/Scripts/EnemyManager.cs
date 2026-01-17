@@ -1,43 +1,67 @@
 using DG.Tweening;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private Vector3 _velocity;
-    [SerializeField] private Vector3 _lastPosition;
-    [SerializeField] private float _minRotation = -45f;
-    [SerializeField] private float _maxRotation = 45f;
-    [SerializeField] private Vector3 _localVelocity;
-    [SerializeField] private GameObject _carModel;
-    [SerializeField] private float _rotationSpeed;
-    [SerializeField] private float _rotationMultiplier;
+    private Vector3 velocity;
+    private Vector3 lastPosition;
+    [SerializeField] private float minRotation = -45f;
+    [SerializeField] private float maxRotation = 45f;
+    private Vector3 localVelocity;
+    [SerializeField] private GameObject carModel;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float rotationMultiplier;
 
-    [SerializeField] private Vector3 randomMinPoint;
-    [SerializeField] private Vector3 randomMaxPoint;
+    private Vector3 randomMinPoint;
+    private Vector3 randomMaxPoint;
     [SerializeField] private Transform minPosition;
     [SerializeField] private Transform maxPosition;
     [SerializeField] private float speed = 1f;
 
+    public bool sideToSide = true;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject explosionParticle;
+
     private void Start()
     {
-        _lastPosition = transform.position;
+        
+        
+        lastPosition = transform.localPosition;
 
-        Vector3 randomMinPoint = Vector3.Lerp(minPosition.position, maxPosition.position, Random.Range(0, 0.3f));
-        Vector3 randomMaxPoint = Vector3.Lerp(minPosition.position, maxPosition.position, Random.Range(0.7f, 1f));
-        transform.DOMove(randomMaxPoint, speed).From(randomMinPoint).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic);
+        if (minPosition != null && maxPosition != null)
+        {
+            randomMinPoint = Vector3.Lerp(minPosition.localPosition, maxPosition.localPosition, Random.Range(0, 0.3f));
+            randomMaxPoint = Vector3.Lerp(minPosition.localPosition, maxPosition.localPosition, Random.Range(0.7f, 1f));
+        }
+        
+
+        if (sideToSide)
+        {
+            transform.DOLocalMove(randomMaxPoint, speed).From(randomMinPoint).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
+        }
     }
 
     private void Update()
     {
-        _velocity = (transform.position - _lastPosition) / Time.deltaTime;
-        _lastPosition = transform.position;
+        velocity = (transform.localPosition - lastPosition) / Time.deltaTime;
+        lastPosition = transform.localPosition;
 
-        _localVelocity = transform.InverseTransformDirection(_velocity);
-        _localVelocity.x = Mathf.Clamp(_localVelocity.x, _minRotation, _maxRotation);
-        Quaternion targetRotation = Quaternion.Euler(_carModel.transform.rotation.eulerAngles.x, _velocity.x * _rotationMultiplier, _carModel.transform.rotation.eulerAngles.z);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+        localVelocity = transform.InverseTransformDirection(velocity);
+        localVelocity.x = Mathf.Clamp(localVelocity.x, minRotation, maxRotation);
+        Quaternion targetRotation = Quaternion.Euler(carModel.transform.rotation.eulerAngles.x, localVelocity.x * rotationMultiplier, carModel.transform.rotation.eulerAngles.z);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Enemy Car Collided with Wall");
+            Instantiate(explosionParticle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
