@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     public List<GameObject> spawnPositions;
 
     // time until next spawn
-    public float spawnRate = 1.0f;
+    public float spawnRate = 2f;
 
     void Start()
     {

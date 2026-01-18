@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd7f7315957e274ab6c3797949349e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Car
+  car: {fileID: 3747677457862530234}
   playerCamera: {fileID: 0}
   moveSpeed: 30
   slerpSpeed: 10
@@ -653,6 +654,7 @@ MonoBehaviour:
   rotationLerpSpeed: 3
   wheel1: {fileID: 4084756155008286249}
   wheel2: {fileID: 3001688746474532196}
+  explosionParticle: {fileID: 0}
 --- !u!54 &601862275937316952
 Rigidbody:
   m_ObjectHideFlags: 0

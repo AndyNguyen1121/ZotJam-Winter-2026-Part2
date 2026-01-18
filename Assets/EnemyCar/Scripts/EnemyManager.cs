@@ -40,6 +40,9 @@ public class EnemyManager : MonoBehaviour
         {
             transform.DOLocalMove(randomMaxPoint, speed).From(randomMinPoint).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
         }
+
+        // Destroys after 20 seconds of creation
+        Destroy(gameObject, 20f);
     }
 
     private void Update()
@@ -55,13 +58,27 @@ public class EnemyManager : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        transform.Translate(LevelManager.Instance.levelMoveDirection * LevelManager.Instance.enemyMoveSpeed * Time.deltaTime);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Enemy Car Collided with Wall");
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
+            // The tween must be stopped BEFORE or AS the object is destroyed
+            transform.DOKill();
             Destroy(gameObject);
         }
+    }
+
+    // COMPLETE FIX: Add this method to handle the Destroy(gameObject, 20f) timer
+    // and any other destruction cases
+    private void OnDestroy()
+    {
+        transform.DOKill();
     }
 }

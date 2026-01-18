@@ -10,6 +10,8 @@ public class Car : MonoBehaviour
 {
     public static Car Instance;
 
+    public GameObject car;
+
     public Camera playerCamera;
     public float moveSpeed = 1f;
     public float slerpSpeed = 10f;
@@ -45,6 +47,9 @@ public class Car : MonoBehaviour
     public GameObject wheel2;
     private Tween spinTween1;
     private Tween spinTween2;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject explosionParticle;
 
 
     private void Awake()
@@ -164,5 +169,39 @@ public class Car : MonoBehaviour
         }
 
         Debug.Log("hit trigger");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            HandleEnemyCollision();
+        }
+    }
+
+    private void HandleEnemyCollision()
+    {
+        Debug.Log("Car Collided with Enemy");
+        
+        if(explosionParticle != null) 
+            Instantiate(explosionParticle, transform.position, Quaternion.identity);
+            
+        transform.DOKill();
+        
+        Destroy(car);
+        LevelManager.Instance.GameOver();
+    }
+
+    private void OnDestroy()
+    {
+        KillAllTweens();
+    }
+
+    private void KillAllTweens()
+    {
+        if (spinTween1 != null) spinTween1.Kill();
+        if (spinTween2 != null) spinTween2.Kill();
+        
+        transform.DOKill();
     }
 }

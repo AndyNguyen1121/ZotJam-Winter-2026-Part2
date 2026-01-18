@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7831516410480327329}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106913403975335575}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.030343609, y: 0.9351989, z: -0.08254828, w: 0.34302804}
-  m_LocalPosition: {x: 20.365671, y: -2.5747967, z: 1.2428112}
+  m_LocalRotation: {x: -0.08793372, y: -0.01762044, z: 0.001616876, w: 0.99596924}
+  m_LocalPosition: {x: 5.712177, y: -3.9333298, z: -6.380526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

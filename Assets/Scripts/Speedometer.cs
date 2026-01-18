@@ -24,7 +24,9 @@ public class Speedometer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W)){
             TakeDamage(20f);
         }
-        arrow.localEulerAngles = new Vector3(0, 0, Mathf.Lerp(minArrowAngle, maxArrowAngle, health / maxHealth));
+        if (arrow){
+            arrow.localEulerAngles = new Vector3(0, 0, Mathf.Lerp(minArrowAngle, maxArrowAngle, health / maxHealth));
+        }
     }
 
     public void TakeDamage(float damage)
