@@ -23,6 +23,7 @@ public class Car : MonoBehaviour
 
     [Header("Rotation")]
     public GameObject carBody;
+    public GameObject carParent;
     public float minYRotation = -45f;
     public float maxYRotation = 45f;
     public float minZRotation = -100f;
@@ -92,10 +93,12 @@ public class Car : MonoBehaviour
             }
 
             isMoving = true;
-            moveDirection.x = -right.x * moveSpeed;
+            moveDirection = -right * moveSpeed;
 
             movingLeft = true;
             movingRight = false;
+
+            Debug.Log("daa");
         }
         // Right movement
         else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -106,7 +109,7 @@ public class Car : MonoBehaviour
             }
 
             isMoving = true;
-            moveDirection.x = right.x * moveSpeed;
+            moveDirection = right * moveSpeed;
 
             movingLeft = false;
             movingRight = true;
@@ -116,18 +119,18 @@ public class Car : MonoBehaviour
             isMoving = false;
             movingLeft = false;
             movingRight = false;
-            moveDirection.x = 0;
+            moveDirection = Vector3.zero;
         }
 
         rb.linearVelocity = moveDirection;
         HandleInputTimers();
         if (timeSinceSwitchedInput > timeDelayThreshold)
         {
-            rotationSpeed = Mathf.Lerp(rotationSpeed, 10f, rotationLerpSpeed * Time.deltaTime);
+            rotationSpeed = Mathf.Lerp(rotationSpeed, 20f, rotationLerpSpeed * Time.deltaTime);
         }
         else
         {
-            rotationSpeed = Mathf.Lerp(rotationSpeed, 3f, 20f * Time.deltaTime);
+            rotationSpeed = Mathf.Lerp(rotationSpeed, 6f, 20f * Time.deltaTime);
         }
         HandleRotation();
 
@@ -150,5 +153,17 @@ public class Car : MonoBehaviour
     void HandleInputTimers()
     {
         timeSinceSwitchedInput += Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RotationCollider"))
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, carParent.transform.eulerAngles.y + 90, 0);
+            carParent.transform.transform.rotation = targetRotation;
+            LevelManager.Instance.levelMoveDirection = -transform.forward;
+        }
+
+        Debug.Log("hit trigger");
     }
 }
