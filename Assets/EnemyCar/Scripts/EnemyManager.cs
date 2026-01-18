@@ -43,6 +43,7 @@ public class EnemyManager : MonoBehaviour
 
             transform.localPosition = startPoint;
             transform.DOLocalMove(randomMaxPoint, speed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
+            AudioManager.PlaySFX("car_screech");
         }
 
         // Destroys after 20 seconds of creation
@@ -72,6 +73,7 @@ public class EnemyManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy Car Collided with Wall");
+            AudioManager.PlaySFX("explosion");
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
             // The tween must be stopped BEFORE or AS the object is destroyed
             transform.DOKill();
