@@ -111,6 +111,8 @@ public class Car : MonoBehaviour
         {
             if (movingLeft)
             {
+
+                AudioManager.PlaySFX("car_screech");
                 timeSinceSwitchedInput = 0;
             }
 
@@ -152,7 +154,6 @@ public class Car : MonoBehaviour
         float targetCarBodyZRotation = maxZRotation * speedFraction * Mathf.Sign(localVelocity.x);
         Quaternion targetCarBodyRotation = Quaternion.Euler(carBody.transform.localRotation.eulerAngles.x, carBody.transform.localRotation.eulerAngles.y, targetCarBodyZRotation * rotationZMultiplier * -1);
         carBody.transform.localRotation = Quaternion.Slerp(carBody.transform.localRotation, targetCarBodyRotation, rotationSpeed * Time.deltaTime);
-
     }
 
     void HandleInputTimers()

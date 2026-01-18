@@ -4,6 +4,7 @@ public class CarSparkManager : MonoBehaviour
 {
     public ParticleSystem sparksParticle;
     public Transform followTarget;
+    public GameObject carSparksSound;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class CarSparkManager : MonoBehaviour
         if (other.CompareTag("Wall"))
         {
             sparksParticle.Play();
+            carSparksSound.SetActive(true);
         }
     }
 
@@ -27,6 +29,7 @@ public class CarSparkManager : MonoBehaviour
         if (other.CompareTag("Wall"))
         {
             sparksParticle.Stop();
+            carSparksSound.SetActive(false);
         }
     }
 }
