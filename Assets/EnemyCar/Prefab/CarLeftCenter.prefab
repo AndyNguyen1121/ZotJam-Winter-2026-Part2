@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8387094275117641328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3491382907067084113}
+  m_Layer: 0
+  m_Name: CarLeftCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3491382907067084113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387094275117641328}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 91.31, y: -0.00001, z: 248.75047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3700874159751402881}
+  - {fileID: 4048850686582748202}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8700916668563119576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3700874159751402881}
+  - component: {fileID: 3761329687786287663}
+  m_Layer: 0
+  m_Name: Spline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3700874159751402881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700916668563119576}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.74961853, y: 0.00001, z: -3.4482117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3491382907067084113}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3761329687786287663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700916668563119576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineContainer
+  m_Spline:
+    m_EditModeType: 1
+    m_Knots: []
+    m_MetaData: []
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Splines:
+  - m_EditModeType: 1
+    m_Knots:
+    - Position:
+        x: 0
+        y: 0
+        z: 0
+      TangentIn:
+        x: -0
+        y: -0
+        z: -0.82490546
+      TangentOut:
+        x: 0
+        y: 0
+        z: 0.82490546
+      Rotation:
+        value:
+          x: 0
+          y: 0.0021577526
+          z: 0
+          w: 0.9999977
+    - Position:
+        x: 0.035598755
+        y: 0
+        z: 8.248978
+      TangentIn:
+        x: -0
+        y: -0
+        z: -1.879965
+      TangentOut:
+        x: 0
+        y: 0
+        z: 1.9657294
+      Rotation:
+        value:
+          x: 0
+          y: 0.4089178
+          z: 0
+          w: 0.91257125
+    - Position:
+        x: 9
+        y: 0
+        z: 7.259262
+      TangentIn:
+        x: -0
+        y: -0
+        z: -0.9018871
+      TangentOut:
+        x: 0
+        y: 0
+        z: 0.9018871
+      Rotation:
+        value:
+          x: 0
+          y: 0.74489546
+          z: 0
+          w: 0.66718125
+    m_MetaData:
+    - Mode: 0
+      Tension: 0.5
+    - Mode: 0
+      Tension: 0.5
+    - Mode: 0
+      Tension: 0.5
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Knots:
+    m_KnotsLink: []
+--- !u!1001 &4592212851805983681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3491382907067084113}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.74961853
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.4482117
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999977
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0021577529
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      propertyPath: m_Name
+      value: car model 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7026783713954462882}
+  m_SourcePrefab: {fileID: 100100000, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+--- !u!1 &3709761663611448976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+  m_PrefabInstance: {fileID: 4592212851805983681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7026783713954462882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709761663611448976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineAnimate
+  m_Target: {fileID: 3761329687786287663}
+  m_PlayOnAwake: 1
+  m_LoopMode: 0
+  m_Method: 0
+  m_Duration: 0.5
+  m_MaxSpeed: 70.49754
+  m_EasingMode: 3
+  m_AlignmentMode: 1
+  m_ObjectForwardAxis: 2
+  m_ObjectUpAxis: 1
+  m_StartOffset: 0
+--- !u!4 &4048850686582748202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a1f0d3638f9229049ad6fff76a3ddc58, type: 3}
+  m_PrefabInstance: {fileID: 4592212851805983681}
+  m_PrefabAsset: {fileID: 0}
