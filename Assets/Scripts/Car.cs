@@ -133,7 +133,6 @@ public class Car : MonoBehaviour
             rotationSpeed = Mathf.Lerp(rotationSpeed, 6f, 20f * Time.deltaTime);
         }
         HandleRotation();
-
     }
 
     void HandleRotation()
