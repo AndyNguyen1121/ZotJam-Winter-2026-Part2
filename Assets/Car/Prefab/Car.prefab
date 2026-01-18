@@ -634,7 +634,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 112.4
+    FieldOfView: 124.4
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -766,18 +766,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Car
   car: {fileID: 3747677457862530234}
   playerCamera: {fileID: 0}
-  moveSpeed: 30
+  moveSpeed: 50
   slerpSpeed: 10
   turnDuration: 4.15
   carBody: {fileID: 5260856755083145597}
   carParent: {fileID: 3747677457862530234}
-  minYRotation: -100
-  maxYRotation: 100
-  minZRotation: -30
-  maxZRotation: 30
-  rotationSpeed: 10
-  rotationYMultiplier: 1.2
-  rotationZMultiplier: 2
+  minYRotation: -30
+  maxYRotation: 30
+  minZRotation: -20
+  maxZRotation: 20
+  rotationSpeed: 3
+  rotationYMultiplier: 1
+  rotationZMultiplier: 1
   timeSinceSwitchedInput: 0
   timeDelayThreshold: 3
   rotationLerpSpeed: 3

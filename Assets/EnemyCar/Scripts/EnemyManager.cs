@@ -38,11 +38,12 @@ public class EnemyManager : MonoBehaviour
 
         if (sideToSide)
         {
-            float startT = Random.value;
+/*            float startT = Random.value;
             Vector3 startPoint = Vector3.Lerp(randomMinPoint, randomMaxPoint, startT);
 
-            transform.localPosition = startPoint;
-            transform.DOLocalMove(randomMaxPoint, speed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
+            transform.localPosition = startPoint;*/
+            transform.DOLocalMove(randomMaxPoint, speed).From(randomMinPoint).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
+            AudioManager.PlaySFX("car_screech");
         }
 
         // Destroys after 20 seconds of creation
