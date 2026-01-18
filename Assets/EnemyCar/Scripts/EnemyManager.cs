@@ -43,7 +43,6 @@ public class EnemyManager : MonoBehaviour
 
             transform.localPosition = startPoint;
             transform.DOLocalMove(randomMaxPoint, speed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
-            AudioManager.PlaySFX("car_screech");
         }
 
         // Destroys after 20 seconds of creation
