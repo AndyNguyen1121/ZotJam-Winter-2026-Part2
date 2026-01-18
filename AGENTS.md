@@ -2,6 +2,7 @@
 - Project name: ZotJam-Winter-2026-Part2
 - Unity version: Unity 6000.2.8f1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - Active scene:
   - Name: SelectionScene
   - Tags:
@@ -10,6 +11,10 @@
     - Default, TransparentFX, Ignore Raycast, Water, UI, Wall
 - Active game object:
   - Name: Canvas
+=======
+- Active game object:
+  - Name: weq
+>>>>>>> Stashed changes
 =======
 - Active game object:
   - Name: weq
