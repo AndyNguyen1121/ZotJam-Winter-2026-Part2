@@ -5,7 +5,7 @@ public class SimpleRoadManager : MonoBehaviour
 {
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(LevelManager.Instance.levelMoveDirection * LevelManager.Instance.levelMoveSpeed * Time.deltaTime);
     }
