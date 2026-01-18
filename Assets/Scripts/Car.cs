@@ -8,6 +8,8 @@ using UnityEngine.XR.LegacyInputHelpers;
 
 public class Car : MonoBehaviour
 {
+    public static Car Instance;
+
     public Camera playerCamera;
     public float moveSpeed = 1f;
     public float slerpSpeed = 10f;
@@ -42,6 +44,14 @@ public class Car : MonoBehaviour
     private Tween spinTween1;
     private Tween spinTween2;
 
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Debug.Log("More than one player car in scene");
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -65,6 +75,8 @@ public class Car : MonoBehaviour
                 .SetRelative(true)
                 .SetEase(Ease.Linear)
                 .SetLoops(-1, LoopType.Restart);
+
+        LevelManager.Instance.levelMoveDirection = -transform.forward;
     }
 
     void Update()
@@ -125,13 +137,13 @@ public class Car : MonoBehaviour
     {
         localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
         localVelocity.x = Mathf.Clamp(localVelocity.x, minYRotation, maxYRotation);
-        Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, localVelocity.x * rotationYMultiplier, transform.rotation.eulerAngles.z);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, localVelocity.x * rotationYMultiplier, transform.localRotation.eulerAngles.z);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         float speedFraction = Mathf.Abs(localVelocity.x) / maxYRotation;
         float targetCarBodyZRotation = maxZRotation * speedFraction * Mathf.Sign(localVelocity.x);
-        Quaternion targetCarBodyRotation = Quaternion.Euler(carBody.transform.eulerAngles.x, carBody.transform.eulerAngles.y, targetCarBodyZRotation * rotationZMultiplier);
-        carBody.transform.rotation = Quaternion.Slerp(carBody.transform.rotation, targetCarBodyRotation, rotationSpeed * Time.deltaTime);
+        Quaternion targetCarBodyRotation = Quaternion.Euler(carBody.transform.localRotation.eulerAngles.x, carBody.transform.localRotation.eulerAngles.y, targetCarBodyZRotation * rotationZMultiplier);
+        carBody.transform.localRotation = Quaternion.Slerp(carBody.transform.localRotation, targetCarBodyRotation, rotationSpeed * Time.deltaTime);
 
     }
 
