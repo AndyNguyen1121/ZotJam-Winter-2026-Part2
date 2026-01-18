@@ -7,14 +7,14 @@ public class CarSparkManager : MonoBehaviour
 
     private void Start()
     {
-        sparksParticle.Pause();
+        sparksParticle.Stop();
     }
     private void Update()
     {
         transform.position = followTarget.position;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Wall"))
         {
