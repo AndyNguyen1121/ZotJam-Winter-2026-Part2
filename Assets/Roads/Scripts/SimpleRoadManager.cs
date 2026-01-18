@@ -20,7 +20,7 @@ public class SimpleRoadManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LevelManager.Instance.SpawnNewRoad();
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, 7f);
         }
     }
 }

@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -7,7 +9,9 @@ public class LevelManager : MonoBehaviour
     public float levelMoveSpeed = 10f;
     public Transform playerTransform;
     public Transform spawnLocation;
-    public GameObject testRoad;
+    
+
+    public List<GameObject> roadPrefabs = new();
 
     private void Awake()
     {
@@ -28,6 +32,7 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnNewRoad()
     {
-        Instantiate(testRoad, spawnLocation.position, Quaternion.identity);
+        int randomIndex = Random.Range(0, (int)roadPrefabs.Count);
+        Instantiate(roadPrefabs[randomIndex], spawnLocation.position, Quaternion.identity);
     }
 }
