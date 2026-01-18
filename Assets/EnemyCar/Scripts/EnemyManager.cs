@@ -38,6 +38,7 @@ public class EnemyManager : MonoBehaviour
 
         if (sideToSide)
         {
+            AudioManager.PlaySFX("car_screech");
             transform.DOLocalMove(randomMaxPoint, speed).From(randomMinPoint).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
         }
     }
@@ -60,6 +61,7 @@ public class EnemyManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Enemy Car Collided with Wall");
+            AudioManager.PlaySFX("explosion");
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
