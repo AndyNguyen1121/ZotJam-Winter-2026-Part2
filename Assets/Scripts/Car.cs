@@ -20,6 +20,7 @@ public class Car : MonoBehaviour
     private bool isMoving = false;
     private bool movingRight;
     private bool movingLeft;
+    public float turnDuration = 3;
 
     [Header("Rotation")]
     public GameObject carBody;
@@ -144,7 +145,7 @@ public class Car : MonoBehaviour
 
         float speedFraction = Mathf.Abs(localVelocity.x) / maxYRotation;
         float targetCarBodyZRotation = maxZRotation * speedFraction * Mathf.Sign(localVelocity.x);
-        Quaternion targetCarBodyRotation = Quaternion.Euler(carBody.transform.localRotation.eulerAngles.x, carBody.transform.localRotation.eulerAngles.y, targetCarBodyZRotation * rotationZMultiplier);
+        Quaternion targetCarBodyRotation = Quaternion.Euler(carBody.transform.localRotation.eulerAngles.x, carBody.transform.localRotation.eulerAngles.y, targetCarBodyZRotation * rotationZMultiplier * -1);
         carBody.transform.localRotation = Quaternion.Slerp(carBody.transform.localRotation, targetCarBodyRotation, rotationSpeed * Time.deltaTime);
 
     }
@@ -159,8 +160,7 @@ public class Car : MonoBehaviour
         if (other.CompareTag("RotationCollider"))
         {
             Quaternion targetRotation = Quaternion.Euler(0, carParent.transform.eulerAngles.y + 90, 0);
-            carParent.transform.transform.rotation = targetRotation;
-            LevelManager.Instance.levelMoveDirection = -transform.forward;
+            carParent.transform.DORotateQuaternion(targetRotation, turnDuration);
         }
 
         Debug.Log("hit trigger");
