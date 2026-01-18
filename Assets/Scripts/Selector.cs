@@ -7,6 +7,7 @@ public class Selector : MonoBehaviour
 
     public Button TesButton;
     public Button FordButton;
+    public MainMenu Camera;
     
     public string nextLevel = "TerrainGeneration";
     
@@ -26,6 +27,6 @@ public class Selector : MonoBehaviour
     public void SetCharacter(Globals.Character character){
         Debug.Log("AHAHAJHA");
         Globals.selectedCharacter = character;
-        SceneManager.LoadScene(nextLevel);
+        Camera.StartGame();
     }
 }

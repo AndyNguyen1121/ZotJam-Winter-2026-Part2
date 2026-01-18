@@ -11,14 +11,19 @@ public class MainMenu : MonoBehaviour
     public AudioSource AccelerationSound;
 
     
-    public string nextLevel = "SelectionScene";
+    public string nextLevel = "TerrainGeneration";
 
     void Start()
     {
-        StartButton.onClick.AddListener(StartGame);
+        StartButton.onClick.AddListener(GoToCharacterSelect);
     }
 
-    void StartGame()
+    void GoToCharacterSelect()
+    {
+        CameraAnimator.Play("MainCameraCharacterSelect");
+    }
+
+    public void StartGame()
     {
         CameraAnimator.Play("MenuCameraMoveUp");
         FadeToBlack.SetActive(true);
@@ -27,7 +32,7 @@ public class MainMenu : MonoBehaviour
     }
 
     IEnumerator LoadLevelSequence(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(nextLevel);
     }
 
