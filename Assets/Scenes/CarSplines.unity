@@ -661,6 +661,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4048850686582748202, guid: 6eb74be445e5ca645ab112ccc37b540d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.74961853
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048850686582748202, guid: 6eb74be445e5ca645ab112ccc37b540d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.4482117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048850686582748202, guid: 6eb74be445e5ca645ab112ccc37b540d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999977
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048850686582748202, guid: 6eb74be445e5ca645ab112ccc37b540d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0021577529
+      objectReference: {fileID: 0}
     - target: {fileID: 8387094275117641328, guid: 6eb74be445e5ca645ab112ccc37b540d, type: 3}
       propertyPath: m_Name
       value: CarLeftUpCenter
