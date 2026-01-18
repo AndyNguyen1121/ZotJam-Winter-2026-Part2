@@ -31,14 +31,18 @@ public class EnemyManager : MonoBehaviour
 
         if (minPosition != null && maxPosition != null)
         {
-            randomMinPoint = Vector3.Lerp(minPosition.localPosition, maxPosition.localPosition, Random.Range(0, 0.3f));
-            randomMaxPoint = Vector3.Lerp(minPosition.localPosition, maxPosition.localPosition, Random.Range(0.7f, 1f));
+            randomMinPoint = Vector3.Lerp(minPosition.localPosition, maxPosition.localPosition, Random.Range(0, 0.5f));
+            randomMaxPoint = Vector3.Lerp(minPosition.localPosition, maxPosition.localPosition, Random.Range(0.5f, 1f));
         }
         
 
         if (sideToSide)
         {
-            transform.DOLocalMove(randomMaxPoint, speed).From(randomMinPoint).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
+            float startT = Random.value;
+            Vector3 startPoint = Vector3.Lerp(randomMinPoint, randomMaxPoint, startT);
+
+            transform.localPosition = startPoint;
+            transform.DOLocalMove(randomMaxPoint, speed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine, 2);
         }
 
         // Destroys after 20 seconds of creation
@@ -63,15 +67,18 @@ public class EnemyManager : MonoBehaviour
         transform.Translate(LevelManager.Instance.levelMoveDirection * LevelManager.Instance.enemyMoveSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy Car Collided with Wall");
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
             // The tween must be stopped BEFORE or AS the object is destroyed
             transform.DOKill();
             Destroy(gameObject);
+
+            if (collision.gameObject.CompareTag("Player"))
+                Speedometer.Instance.TakeDamage(10f);
         }
     }
 

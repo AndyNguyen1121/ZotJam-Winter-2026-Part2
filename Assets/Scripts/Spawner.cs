@@ -33,10 +33,13 @@ public class Spawner : MonoBehaviour
 
         // Picks a random spawn point (one of the three lanes)
         int randomSpawn = Random.Range(0, spawnPositions.Count);
-        GameObject spawnPoint = spawnPositions[randomSpawn];
+        GameObject spawnPoint = spawnPositions[1];
+
+        Vector3 spawn = spawnPoint.transform.position;
+        spawn.z += 500;
 
         // Instantiates enemy car
-        GameObject enemyObject = Instantiate(enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        GameObject enemyObject = Instantiate(enemyPrefab, spawn, spawnPoint.transform.rotation);
         enemyObject.AddComponent<EnemyCar>();
     }
 }

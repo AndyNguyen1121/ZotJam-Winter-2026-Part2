@@ -66,6 +66,7 @@ public class LevelManager : MonoBehaviour
             currentScore++;
             scoreTimer -= scoreInterval; 
             UpdateScoreUI();
+            levelMoveSpeed = Mathf.Clamp(levelMoveSpeed + 1, 200, 250f);
         }
     }
 

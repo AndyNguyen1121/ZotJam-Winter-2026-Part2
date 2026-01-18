@@ -185,11 +185,6 @@ public class Car : MonoBehaviour
         
         if(explosionParticle != null) 
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
-            
-        transform.DOKill();
-        
-        Destroy(car);
-        LevelManager.Instance.GameOver();
     }
 
     private void OnDestroy()
