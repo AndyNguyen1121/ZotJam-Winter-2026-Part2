@@ -111,8 +111,6 @@ public class Car : MonoBehaviour
         {
             if (movingLeft)
             {
-
-                AudioManager.PlaySFX("car_screech");
                 timeSinceSwitchedInput = 0;
             }
 
