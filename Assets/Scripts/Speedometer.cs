@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Speedometer : MonoBehaviour
 {
@@ -40,7 +41,8 @@ public class Speedometer : MonoBehaviour
 
         if (health == 0)
         {
-            LevelManager.Instance.GameOver(); 
+            SceneManager.LoadScene("Dead");
+            //LevelManager.Instance.GameOver(); 
         }
     }
 }
